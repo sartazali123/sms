@@ -28,6 +28,9 @@ public class Customer extends javax.swing.JFrame {
 
     }
 
+   
+
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +52,6 @@ public class Customer extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         t1 = new javax.swing.JTextField();
         t2 = new javax.swing.JTextField();
         t3 = new javax.swing.JTextField();
@@ -57,7 +59,6 @@ public class Customer extends javax.swing.JFrame {
         t5 = new javax.swing.JTextField();
         t6 = new javax.swing.JTextField();
         t7 = new javax.swing.JTextField();
-        t8 = new javax.swing.JTextField();
         b1 = new javax.swing.JButton();
         b2 = new javax.swing.JButton();
 
@@ -86,6 +87,29 @@ public class Customer extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(473, Short.MAX_VALUE))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 129;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jPanel1, gridBagConstraints);
+
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setText("Name");
@@ -100,19 +124,11 @@ public class Customer extends javax.swing.JFrame {
 
         jLabel7.setText("State");
 
-        jLabel8.setText("Saharanpur");
-
-        jLabel9.setText("GST No");
+        jLabel8.setText("GST No");
 
         t7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 t7ActionPerformed(evt);
-            }
-        });
-
-        t8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                t8ActionPerformed(evt);
             }
         });
 
@@ -145,24 +161,22 @@ public class Customer extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel8))
                         .addGap(64, 64, 64)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(t1)
+                            .addComponent(t1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                             .addComponent(t2)
                             .addComponent(t3)
                             .addComponent(t4)
                             .addComponent(t5)
                             .addComponent(t6)
-                            .addComponent(t7)
-                            .addComponent(t8, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
+                            .addComponent(t7)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,39 +210,14 @@ public class Customer extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8))
                     .addComponent(t7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(t8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(70, 70, 70)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(b1)
                     .addComponent(b2))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 129;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(jPanel1, gridBagConstraints);
+        getContentPane().add(jPanel3, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,10 +226,6 @@ public class Customer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_t7ActionPerformed
 
-    private void t8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_t8ActionPerformed
-
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         // TODO add your handling code here:
        Connection con = null;
@@ -248,7 +233,7 @@ public class Customer extends javax.swing.JFrame {
         ResultSet rs = null; 
         int status=0;
         
-        String s1=t1.getText();
+       // String s1=t1.getText();
         //String s2=t2.getText();
       
       //String s2=t2.getText();
@@ -258,17 +243,30 @@ public class Customer extends javax.swing.JFrame {
       //String s6=t6.getText();
       //String s7=t7.getText();
       //String s8=t8.getText();
-      System.out.println("data inserted...");
+    
         try{
-      //  Class.forName("com.java.derby.driver");
-        con=DriverManager.getConnection( "jdbc:derby://localhost:1527/medical","medical","medical");   
-            String query = "insert into customer1(name) values (?)";
-            //pstmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, s1);
+        Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+        con=DBconnector.getConnection();
+       // con=DriverManager.getConnection( "jdbc:derby://localhost:1527/medical","medical","medical");   
+            String query = "insert into customer(customer_name,customer_email,customer_mobileno,customer_address,customer_city,customer_state,customer_gstno) values (?,?,?,?,?,?,?)";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1,t1.getText());
+            pstmt.setString(2,t2.getText());
+            pstmt.setString(3,t3.getText());
+            pstmt.setString(4,t4.getText());
+            pstmt.setString(5,t5.getText());
+            pstmt.setString(6,t6.getText());
+            pstmt.setString(7,t7.getText());
            // pstmt.setString(2, s2);
-            
             pstmt.executeUpdate();
+           
             t1.setText(" ");
+            t2.setText(" ");
+            t3.setText(" ");
+            t4.setText(" ");
+            t5.setText(" ");
+            t6.setText(" ");
+            t7.setText(" ");
            // rs = pstmt.getGeneratedKeys();
           //  if(rs != null && rs.next()){
           //      System.out.println("Generated Emp Id: "+rs.getInt(1));
@@ -358,7 +356,6 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -369,6 +366,21 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JTextField t5;
     private javax.swing.JTextField t6;
     private javax.swing.JTextField t7;
-    private javax.swing.JTextField t8;
     // End of variables declaration//GEN-END:variables
+
+    Object getCustomer_name() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Object getCustomer_mobile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Object getCustomer_address() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Object getCustomer_email() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

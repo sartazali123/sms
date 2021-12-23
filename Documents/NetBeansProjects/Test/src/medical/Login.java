@@ -165,7 +165,7 @@ Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/medical;
                 if(s1.equals(s3)&& s2.equals(s4)){
                 
                     this.setVisible(false);
-        new Dashboard_1().setVisible(true); 
+        new Dashboard().setVisible(true); 
                 }
                 
                 else{

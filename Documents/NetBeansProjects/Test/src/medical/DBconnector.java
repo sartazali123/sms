@@ -23,9 +23,12 @@ public class DBconnector {
      public static Connection getConnection() throws Exception
          
     {
-          Class.forName("com.mysql.jdbc.Driver"); 
-          Connection cn=DriverManager.getConnection( "jdbc:mysql://localhost:3306/medical","root",""); 
+          Class.forName("org.apache.derby.jdbc.EmbeddedDriver"); 
+          Connection cn=DriverManager.getConnection("jdbc:derby://localhost:1527/medical","medical","medical"); 
       
+          if(cn!=null){
+      System.out.println("database connected..");
+      }
        return cn;
     }
      

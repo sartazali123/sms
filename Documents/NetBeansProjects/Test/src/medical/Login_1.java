@@ -136,7 +136,7 @@ public class Login_1 extends javax.swing.JFrame {
         
             if(rs.next()){
             //    new Dashboard();board
-            Dashboard_1 adminform = new Dashboard_1();
+            Dashboard adminform = new Dashboard();
             adminform.setVisible(true);
             }else{
             
