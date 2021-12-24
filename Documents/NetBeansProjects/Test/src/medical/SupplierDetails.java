@@ -395,7 +395,7 @@ public class SupplierDetails extends javax.swing.JFrame {
 
         try{
             con=getConnection();
-            String query = "delete from supplierdetails  WHERE supplier_id= "+id+"";
+            String query = "delete from supplier  WHERE supplier_id= "+id+"";
             pstmt = con.prepareStatement(query);
             pstmt.executeUpdate();
                       
@@ -445,9 +445,10 @@ public class SupplierDetails extends javax.swing.JFrame {
         String mobile = rs.getString("supplier_mobile");
         String address = rs.getString("supplier_address");
         String email = rs.getString("supplier_email");
+        String gstno = rs.getString("supplier_gstno");
         
         
-        String data[]={id, name, mobile,address,email};
+        String data[]={id, name, mobile,address,email,gstno};
        
         DefaultTableModel model1=(DefaultTableModel)supplier_details.getModel();
      // supplier_details.setModel(model);
