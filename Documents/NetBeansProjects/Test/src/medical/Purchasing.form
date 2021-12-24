@@ -73,7 +73,7 @@
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="supplier_gstno" max="32767" attributes="0"/>
                                   <Component id="supplier_name" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="item_name" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="product_name" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <Component id="total_number_of_product" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
@@ -90,19 +90,19 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                                  <Component id="item_quantity" min="-2" pref="39" max="-2" attributes="0"/>
+                                                  <Component id="product_quantity" min="-2" pref="39" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="batch_num" min="-2" pref="72" max="-2" attributes="0"/>
+                                                  <Component id="product_batchno" min="-2" pref="72" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="item_price" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  <Component id="product_landingcost" min="-2" pref="90" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" attributes="0">
@@ -116,7 +116,7 @@
                                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="item_mrp" min="-2" pref="65" max="-2" attributes="0"/>
+                                                          <Component id="product_sellingcost" min="-2" pref="65" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -124,7 +124,7 @@
                                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                                   <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="hsn_num" min="-2" pref="65" max="-2" attributes="0"/>
+                                                  <Component id="product_hsnno" min="-2" pref="65" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -153,10 +153,10 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="gst_per" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Component id="product_gst" min="-2" pref="52" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="bt3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="save" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -199,28 +199,28 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="item_quantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="product_quantity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="item_price" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="product_landingcost" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="item_mrp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="product_sellingcost" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="discount" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gst_per" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="product_gst" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="item_name" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="product_name" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="hsn_num" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="bt3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="product_hsnno" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="save" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="total_number_of_product" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="batch_num" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="product_batchno" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="product_expire_date" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -290,7 +290,7 @@
             <Property name="text" type="java.lang.String" value="Product Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="item_name">
+        <Component class="javax.swing.JComboBox" name="product_name">
           <Properties>
             <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -298,8 +298,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="item_namePopupMenuWillBecomeInvisible"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_nameActionPerformed"/>
+            <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="product_namePopupMenuWillBecomeInvisible"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="product_nameActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -310,10 +310,10 @@
             <Property name="text" type="java.lang.String" value="Quantity "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="item_quantity">
+        <Component class="javax.swing.JTextField" name="product_quantity">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_quantityActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="item_quantityKeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="product_quantityActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="product_quantityKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -321,14 +321,14 @@
             <Property name="text" type="java.lang.String" value="Price"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="item_price">
+        <Component class="javax.swing.JTextField" name="product_landingcost">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mrp"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="item_mrp">
+        <Component class="javax.swing.JTextField" name="product_sellingcost">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -342,7 +342,7 @@
             <Property name="text" type="java.lang.String" value="GST"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="gst_per">
+        <Component class="javax.swing.JComboBox" name="product_gst">
           <Properties>
             <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -354,7 +354,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gst_perActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="product_gstActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -381,9 +381,9 @@
             <Property name="text" type="java.lang.String" value="Batch No"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="batch_num">
+        <Component class="javax.swing.JTextField" name="product_batchno">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="batch_numActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="product_batchnoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
@@ -396,17 +396,17 @@
             <Property name="text" type="java.lang.String" value="HSN No"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="hsn_num">
+        <Component class="javax.swing.JTextField" name="product_hsnno">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hsn_numActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="product_hsnnoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bt3">
+        <Component class="javax.swing.JButton" name="save">
           <Properties>
             <Property name="text" type="java.lang.String" value="save"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveActionPerformed"/>
           </Events>
         </Component>
         <Component class="org.jdesktop.swingx.JXDatePicker" name="invoice_date">
