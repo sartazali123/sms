@@ -473,10 +473,10 @@ public class CustomerDetails extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-          DefaultTableModel model=(DefaultTableModel)customer_details.getModel();
-         customer_details.setModel(model);
+        DefaultTableModel model=(DefaultTableModel)customer_details.getModel();
+        customer_details.setModel(model);
         
-       TableModel model1 = customer_details.getModel();
+        TableModel model1 = customer_details.getModel();
       
         int i = customer_details.getSelectedRow();
         

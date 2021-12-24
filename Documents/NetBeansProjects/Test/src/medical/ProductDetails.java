@@ -12,20 +12,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import static medical.DBconnector.getConnection;
 
 /**
  *
  * @author Asus
  */
-public class ProductDetails extends javax.swing.JFrame {
+    public class ProductDetails extends javax.swing.JFrame {
 
         
-    Connection con = null;
-    PreparedStatement pstmt = null;
-    int flag=0;
-    
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
     public ProductDetails() throws Exception {
         initComponents();
         setTitle("Product Details");
@@ -43,8 +44,8 @@ public class ProductDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
         save = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -70,9 +71,19 @@ public class ProductDetails extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Product Details"));
 
-        jButton1.setText("New");
+        update.setText("update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Delete");
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         save.setText("save");
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -87,20 +98,20 @@ public class ProductDetails extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
                 .addComponent(save)
-                .addGap(378, 378, 378))
+                .addGap(18, 18, 18)
+                .addComponent(update)
+                .addGap(18, 18, 18)
+                .addComponent(delete)
+                .addGap(489, 489, 489))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(update)
+                    .addComponent(delete)
                     .addComponent(save))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -216,6 +227,11 @@ public class ProductDetails extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        product_details.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                product_detailsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(product_details);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -267,13 +283,11 @@ public class ProductDetails extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         
-          try{
+        try{
       
             con=getConnection();
-        
             String query = "insert into productdetails(product_name,product_salt,product_quantity,product_landingcost,product_sellingcost,product_batchno,product_hsnno) values (?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(query);
-            
             pstmt.setString(1,product_name.getText());
             pstmt.setString(2,product_salt.getText());
             pstmt.setString(3,product_quantity.getText());
@@ -282,8 +296,6 @@ public class ProductDetails extends javax.swing.JFrame {
             pstmt.setString(6,product_batchno.getText());
             pstmt.setString(7,product_hsnno.getText());
             
-          
-        
             pstmt.executeUpdate();
            
             product_name.setText(" ");
@@ -293,53 +305,152 @@ public class ProductDetails extends javax.swing.JFrame {
             product_sellingcost.setText(" ");
             product_batchno.setText(" ");
             product_hsnno.setText(" ");
-            
-       
-          
-     
-
-       System.out.println("data inserted...");
-       
-          }
-          catch(Exception e){}
         
-        try {
+        }
+        
+        catch(Exception e){}
+        
+        try{
+            
+            DefaultTableModel model=(DefaultTableModel)product_details.getModel();
+            model.setRowCount(0);
             ShowProductDetails();
-        } catch (Exception ex) {
+        
+        } 
+        catch (Exception ex) {
             Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_saveActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+            TableModel model1 = product_details.getModel();
+            int i = product_details.getSelectedRow();
+            String cid=model1.getValueAt(i,0).toString();
+            int id=Integer.parseInt(cid);
+
+        try{
+            con=getConnection();
+            String query = "UPDATE productdetails SET product_name='"+product_name.getText()+"',product_salt='"+product_salt.getText()+"',product_quantity='"+product_quantity.getText()+"',product_landingcost='"+product_landingcost.getText()+"',product_sellingcost='"+product_sellingcost.getText()+"',product_batchno='"+product_batchno.getText()+"',product_hsnno='"+product_hsnno.getText()+"' WHERE product_id= "+id+"";
+            pstmt = con.prepareStatement(query);
+            pstmt.executeUpdate();
+                      
+            JOptionPane.showMessageDialog(null, "Data updated Succefully");
+            
+            product_name.setText(" ");
+            product_salt.setText(" ");
+            product_quantity.setText(" ");
+            product_landingcost.setText(" ");
+            product_sellingcost.setText(" ");
+            product_batchno.setText(" ");
+            product_hsnno.setText(" ");
+            
+           
+        } 
+        catch(Exception ex){
+            Logger.getLogger(CustomerDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
+    try {
+        DefaultTableModel model=(DefaultTableModel)product_details.getModel();
+        model.setRowCount(0);
+        ShowProductDetails();
+        }
+    
+    catch (Exception ex) {
+        Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void product_detailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product_detailsMouseClicked
+        // TODO add your handling code here:
+        
+            TableModel model = product_details.getModel();
+            int i = product_details.getSelectedRow();
+            product_name.setText(model.getValueAt(i,1).toString());
+            product_quantity.setText(model.getValueAt(i,2).toString());
+            product_landingcost.setText(model.getValueAt(i,3).toString());
+            product_sellingcost.setText(model.getValueAt(i,4).toString());
+            product_batchno.setText(model.getValueAt(i,5).toString());
+            product_hsnno.setText(model.getValueAt(i,5).toString());
+
+        
+    }//GEN-LAST:event_product_detailsMouseClicked
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+        
+            TableModel model1 = product_details.getModel();
+            int i = product_details.getSelectedRow();
+            String cid=model1.getValueAt(i,0).toString();
+            int id=Integer.parseInt(cid);
+
+        try{
+            con=getConnection();
+            String query = "delete from productdetails  WHERE product_id= "+id+"";
+            pstmt = con.prepareStatement(query);
+            pstmt.executeUpdate();
+                      
+            JOptionPane.showMessageDialog(null, "Data deleted Succefully");
+            
+            product_name.setText(" ");
+            product_salt.setText(" ");
+            product_quantity.setText(" ");
+            product_landingcost.setText(" ");
+            product_sellingcost.setText(" ");
+            product_batchno.setText(" ");
+            product_hsnno.setText(" ");
+            
+           
+        } 
+        catch(Exception ex){
+            Logger.getLogger(CustomerDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
+    try {
+        DefaultTableModel model=(DefaultTableModel)product_details.getModel();
+        model.setRowCount(0);
+        ShowProductDetails();
+        }
+    
+    catch (Exception ex) {
+        Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_deleteActionPerformed
 public void  ShowProductDetails() throws Exception{
 
 
-        String query = "select * FROM productdetails";
-        Statement st;
-        ResultSet rs;
+            String query = "select * FROM productdetails";
+            Statement st;
+            ResultSet rs;
+
+    try {
+            con=getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery(query);
        
-          try {
-                con=getConnection();
-                st = con.createStatement();
-                rs = st.executeQuery(query);
-       
-      while (rs.next()) {
-         DefaultTableModel model=(DefaultTableModel)product_details.getModel();
-        product_details.setModel(model); 
-        String id = rs.getString("product_id");
-        String name = rs.getString("product_name");
-        String quantity = rs.getString("product_quantity");
-        String landingcost = rs.getString("product_landingcost");
-        String sellingcost = rs.getString("product_sellingcost");
-        String batchno = rs.getString("product_batchno");
-        
-        String data[]={id,name,quantity,landingcost,sellingcost,batchno};
-        DefaultTableModel model1=(DefaultTableModel)product_details.getModel();
-        model1.addRow(data);
+    while (rs.next()) {
+           
+            String id = rs.getString("product_id");
+            String name = rs.getString("product_name");
+            String quantity = rs.getString("product_quantity");
+            String landingcost = rs.getString("product_landingcost");
+            String sellingcost = rs.getString("product_sellingcost");
+            String batchno = rs.getString("product_batchno");
+            
+            String data[]={id,name,quantity,landingcost,sellingcost,batchno};
+            DefaultTableModel model1=(DefaultTableModel)product_details.getModel();
+            model1.addRow(data);
  
-   
-     
-    }  }  catch (SQLException ex) {
+        }  
+    }  
+        catch (SQLException ex) {
              Logger.getLogger(ProductDetails.class.getName()).log(Level.SEVERE, null, ex);
-         }
+    }
 
 }
       //  pst=con.prepareStatement(sql);
@@ -387,8 +498,7 @@ public void  ShowProductDetails() throws Exception{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -410,5 +520,6 @@ public void  ShowProductDetails() throws Exception{
     private javax.swing.JTextField product_salt;
     private javax.swing.JTextField product_sellingcost;
     private javax.swing.JButton save;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
