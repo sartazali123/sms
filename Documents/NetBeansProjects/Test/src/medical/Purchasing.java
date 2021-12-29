@@ -145,7 +145,7 @@ public Purchasing() {
 
         product_quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                product_quantityActionPerformed(evt);
+                none(evt);
             }
         });
         product_quantity.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -159,6 +159,12 @@ public Purchasing() {
         jLabel10.setText("Mrp");
 
         jLabel11.setText("Discount %");
+
+        discount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                discountKeyPressed(evt);
+            }
+        });
 
         jLabel12.setText("GST");
 
@@ -305,7 +311,7 @@ public Purchasing() {
                     .addComponent(jLabel2)
                     .addComponent(supplier_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -483,8 +489,7 @@ public Purchasing() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
@@ -613,7 +618,7 @@ public Purchasing() {
 
     while(rs.next()){
             
-            product_quantity.setText(rs.getString("product_quantity"));
+            //product_quantity.setText(rs.getString("product_quantity"));
             product_landingcost.setText(rs.getString("product_landingcost"));
             product_sellingcost.setText(rs.getString("product_sellingcost"));
             product_batchno.setText(rs.getString("product_batchno"));
@@ -629,19 +634,48 @@ public Purchasing() {
 
     
     
-    
+     
     
     private void product_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_product_quantityKeyPressed
         // TODO add your handling code here:
          
+        
+        
+        //String dd=evt.getSource();
+       // String text = textField.getText();
+       // textField.setText(text.toUpperCase());
+       
+        String quatity=product_quantity.getText();
+        int productquantity=Integer.parseInt(quatity);
+        System.out.println(productquantity);
+        String price=product_landingcost.getText();
+        int productprice=Integer.parseInt(price);
+        System.out.println(productprice);
+        float total=productquantity*productprice;
+        
+        total_number_of_product.setText(""+total);
+        
+        
     }//GEN-LAST:event_product_quantityKeyPressed
 
-    private void product_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_product_quantityActionPerformed
+    
+    
+    
+    
+    private void none(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_none
+     
+        
+        //String quatity=product_quantity.getText();
+        //int productquantity=Integer.parseInt(quatity);
+        //String price=product_landingcost.getText();
+        //int productprice=Integer.parseInt(quatity);
+        //float total=productquantity*productprice;
+        //total_number_of_product.setText(""+total);
         
 
 
 // TODO add your handling code here:
-    }//GEN-LAST:event_product_quantityActionPerformed
+    }//GEN-LAST:event_none
 
     private void product_batchnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_product_batchnoActionPerformed
         // TODO add your handling code here:
@@ -735,12 +769,6 @@ public Purchasing() {
          
         
        
-          //row[5]=item.getText();
-          //row[6]=product_mrp.getText();
-          //row[7]=discount.getText();
-        
-         
-       
         }
         catch(Exception e){
         }
@@ -766,10 +794,23 @@ printJob.print();
 } catch(PrinterException pe) {
 System.out.println("Error printing: " + pe);
 }
-
-        
-        
+   
     }//GEN-LAST:event_printActionPerformed
+
+    private void discountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountKeyPressed
+        // TODO add your handling code here:
+        
+        String discount1=discount.getText();
+        int discount2=Integer.getInteger(discount1);
+        String totalamount=total_number_of_product.getText();
+        int totalamount1=Integer.getInteger(totalamount);
+        System.out.println(totalamount1);
+        
+        float totalamount2=totalamount1-totalamount1*discount2/100;
+        
+        total_number_of_product.setText(""+totalamount2);
+        
+    }//GEN-LAST:event_discountKeyPressed
  
     
     
