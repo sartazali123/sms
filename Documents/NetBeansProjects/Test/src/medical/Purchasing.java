@@ -688,14 +688,11 @@ public Purchasing() {
         
         try{        
         Connection con=getConnection();
-        String update="update stock set item_quantity=item_quantity+'"+product_quantity.getText()+"' where item_name='"+product_name.getSelectedItem()+"'";
+        String update="update productdetails set product_quantity=product_quantity+'"+product_quantity.getText()+"' where product_name='"+product_name.getSelectedItem()+"'";
         PreparedStatement ps2=con.prepareStatement(update);
         ps2.executeUpdate();
         
         String insert="insert into purchase(supplier_name,supplier_mobile,supplier_address,supplier_gstno,pur_invoice_date,pur_invoice_num) values(?,?,?,?,?,?)";
-         
-         
-         //String insert_item="insert into purchase(supplier_name,supplier_mobile,supplier_address,supplier_gstno,pur_invoice_date,pur_invoice_num) values(?,?,?,?,?,?)";         
         PreparedStatement ps=con.prepareStatement(insert);
         ps.setString(1,supplier_name.getSelectedItem().toString());
         ps.setString(2,supplier_mobile.getText());
@@ -703,13 +700,11 @@ public Purchasing() {
         ps.setString(4,supplier_gstno.getText());
         ps.setString(5,invoice_date.getDate().toString());
         ps.setString(6,purchase_invoice_num.getText());
-        
         ps.executeUpdate();
         System.out.println("data inserted...");
         ps.close();
 
-        String insert_item="insert into purchase_item1(purchase_invoice_num,item_name,item_quantity,item_price,item_mrp,hsnno,batchno,discount,tax)values(?,?,?,?,?,?,?,?,?)";         
-        
+        String insert_item="insert into purchase_item(purchase_invoice_num,item_name,item_quantity,item_price,item_mrp,hsnno,batchno,discount,tax)values(?,?,?,?,?,?,?,?,?)";         
         PreparedStatement ps1=con.prepareStatement(insert_item);
         String invoice=purchase_invoice_num.getText();
         ps1.setString(1,purchase_invoice_num.getText());
@@ -721,16 +716,38 @@ public Purchasing() {
         ps1.setString(7,product_batchno.getText());
         ps1.setString(8,discount.getText());
         ps1.setString(9,product_gst.getSelectedItem().toString());
-       
-        
         int inserted=ps1.executeUpdate();
        
         System.out.println("data inserted...");
+    
+        supplier_name.setSelectedIndex(0);
+        supplier_mobile.setText(" ");
+        supplier_address.setText(" ");
+        supplier_gstno.setText(" ");
+        invoice_date.setDate(null);
+        purchase_invoice_num.setText(" ");
+        product_name.setSelectedIndex(0);
+        product_quantity.setText(" ");
+         
+        product_landingcost.setText(" ");
+        product_sellingcost.setText(" ");
+        product_hsnno.setText(" ");
+        product_batchno.setText(" ");
+        discount.setText(" ");
+        purchase_invoice_num.setText(" ");
+        product_name.setSelectedIndex(0);
+        product_quantity.setText(" ");
+
         
-        if(inserted>0){
+        
+        
+        
+        
+        
+        
+    if(inserted>0){
           Object row[]=new Object[20];
-       
-           getFieldCal(); 
+          getFieldCal(); 
        // int a=Integer.parseInt(item_quantity.getText());
         //int b=Integer.parseInt(item_price.getText());
           
@@ -753,9 +770,6 @@ public Purchasing() {
           model.addRow(row);
           
         }
-         
-        
-       
         }
         catch(Exception e){
         }
@@ -989,6 +1003,21 @@ public Purchasing() {
     private javax.swing.JComboBox<String> supplier_name;
     private javax.swing.JTextField total_product_price;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(java.awt.event.KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(java.awt.event.KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(java.awt.event.KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 }
