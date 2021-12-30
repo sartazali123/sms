@@ -74,7 +74,7 @@
                                   <Component id="supplier_name" alignment="1" max="32767" attributes="0"/>
                                   <Component id="product_name" alignment="1" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="total_number_of_product" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="total_product_price" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -217,7 +217,7 @@
                       <Component id="save" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="total_number_of_product" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="total_product_price" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="product_batchno" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -313,6 +313,7 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="none"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="product_quantityKeyPressed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="product_quantityKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -356,6 +357,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="product_gstPopupMenuWillBecomeInvisible"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="product_gstActionPerformed"/>
           </Events>
           <AuxValues>
@@ -373,10 +375,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Total Product No"/>
+            <Property name="text" type="java.lang.String" value="Total Product Price"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="total_number_of_product">
+        <Component class="javax.swing.JTextField" name="total_product_price">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel23">
           <Properties>

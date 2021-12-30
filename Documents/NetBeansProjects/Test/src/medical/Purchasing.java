@@ -5,6 +5,7 @@
  */
 package medical;
 import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.*;
@@ -20,7 +21,7 @@ import static medical.DBconnector.getConnection;
  *
  * @author Asus
  */
-public class Purchasing extends javax.swing.JFrame {
+public class Purchasing extends javax.swing.JFrame implements KeyListener {
 
     ResultSet rs=null;
     Connection con=null;
@@ -62,7 +63,7 @@ public Purchasing() {
         product_gst = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        total_number_of_product = new javax.swing.JTextField();
+        total_product_price = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         product_batchno = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -152,6 +153,9 @@ public Purchasing() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 product_quantityKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                product_quantityKeyReleased(evt);
+            }
         });
 
         jLabel9.setText("Price");
@@ -170,6 +174,15 @@ public Purchasing() {
 
         product_gst.setEditable(true);
         product_gst.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "12", "18" }));
+        product_gst.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                product_gstPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
         product_gst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 product_gstActionPerformed(evt);
@@ -180,7 +193,7 @@ public Purchasing() {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add Purchase");
 
-        jLabel20.setText("Total Product No");
+        jLabel20.setText("Total Product Price");
 
         jLabel23.setText("Batch No");
 
@@ -230,7 +243,7 @@ public Purchasing() {
                                 .addComponent(supplier_gstno)
                                 .addComponent(supplier_name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(product_name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(total_number_of_product, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(total_product_price, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,7 +355,7 @@ public Purchasing() {
                     .addComponent(save)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel20)
-                        .addComponent(total_number_of_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(total_product_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel23)
                         .addComponent(product_batchno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel22)
@@ -618,7 +631,7 @@ public Purchasing() {
 
     while(rs.next()){
             
-            //product_quantity.setText(rs.getString("product_quantity"));
+            product_quantity.setText(rs.getString("product_quantity"));
             product_landingcost.setText(rs.getString("product_landingcost"));
             product_sellingcost.setText(rs.getString("product_sellingcost"));
             product_batchno.setText(rs.getString("product_batchno"));
@@ -639,23 +652,20 @@ public Purchasing() {
     private void product_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_product_quantityKeyPressed
         // TODO add your handling code here:
          
-        
-        
-        //String dd=evt.getSource();
-       // String text = textField.getText();
-       // textField.setText(text.toUpperCase());
-       
-        String quatity=product_quantity.getText();
-        int productquantity=Integer.parseInt(quatity);
-        System.out.println(productquantity);
-        String price=product_landingcost.getText();
-        int productprice=Integer.parseInt(price);
-        System.out.println(productprice);
-        float total=productquantity*productprice;
-        
-        total_number_of_product.setText(""+total);
-        
-        
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+                     
+            String quantity=product_quantity.getText();
+            int productquantity=Integer.parseInt(quantity);
+            System.out.println(productquantity);
+            
+            String price=product_landingcost.getText();
+            int productprice=Integer.parseInt(price);
+            System.out.println(productprice);
+            float total=productquantity*productprice;
+            total_product_price.setText(""+total);
+
+         }
+      
     }//GEN-LAST:event_product_quantityKeyPressed
 
     
@@ -664,16 +674,7 @@ public Purchasing() {
     
     private void none(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_none
      
-        
-        //String quatity=product_quantity.getText();
-        //int productquantity=Integer.parseInt(quatity);
-        //String price=product_landingcost.getText();
-        //int productprice=Integer.parseInt(quatity);
-        //float total=productquantity*productprice;
-        //total_number_of_product.setText(""+total);
-        
-
-
+     
 // TODO add your handling code here:
     }//GEN-LAST:event_none
 
@@ -683,34 +684,30 @@ public Purchasing() {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
-        		
-		//int id=0;
-         try{
+        DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
         
-         Connection con=getConnection();
-         
+        try{        
+        Connection con=getConnection();
         String update="update stock set item_quantity=item_quantity+'"+product_quantity.getText()+"' where item_name='"+product_name.getSelectedItem()+"'";
-        
         PreparedStatement ps2=con.prepareStatement(update);
-         ps2.executeUpdate();
-        //if(update){}
+        ps2.executeUpdate();
+        
         String insert="insert into purchase(supplier_name,supplier_mobile,supplier_address,supplier_gstno,pur_invoice_date,pur_invoice_num) values(?,?,?,?,?,?)";
          
          
          //String insert_item="insert into purchase(supplier_name,supplier_mobile,supplier_address,supplier_gstno,pur_invoice_date,pur_invoice_num) values(?,?,?,?,?,?)";         
-         PreparedStatement ps=con.prepareStatement(insert);
-         ps.setString(1,supplier_name.getSelectedItem().toString());
-         ps.setString(2,supplier_mobile.getText());
-         ps.setString(3,supplier_address.getText());
-         ps.setString(4,supplier_gstno.getText());
-         ps.setString(5,invoice_date.getDate().toString());
-         ps.setString(6,purchase_invoice_num.getText());
+        PreparedStatement ps=con.prepareStatement(insert);
+        ps.setString(1,supplier_name.getSelectedItem().toString());
+        ps.setString(2,supplier_mobile.getText());
+        ps.setString(3,supplier_address.getText());
+        ps.setString(4,supplier_gstno.getText());
+        ps.setString(5,invoice_date.getDate().toString());
+        ps.setString(6,purchase_invoice_num.getText());
         
         ps.executeUpdate();
         System.out.println("data inserted...");
-        		ps.close();
-	
+        ps.close();
+
         String insert_item="insert into purchase_item1(purchase_invoice_num,item_name,item_quantity,item_price,item_mrp,hsnno,batchno,discount,tax)values(?,?,?,?,?,?,?,?,?)";         
         
         PreparedStatement ps1=con.prepareStatement(insert_item);
@@ -726,9 +723,9 @@ public Purchasing() {
         ps1.setString(9,product_gst.getSelectedItem().toString());
        
         
-       int inserted=ps1.executeUpdate();
+        int inserted=ps1.executeUpdate();
        
-       System.out.println("data inserted...");
+        System.out.println("data inserted...");
         
         if(inserted>0){
           Object row[]=new Object[20];
@@ -742,29 +739,19 @@ public Purchasing() {
           //double sgst=((a*b)/100)*6;
           //double igst=((a*b)/100)*12;
           //double total=cgst+sgst+((a*b)-((a*b)/100)*4);
-       
-           
           row[0]="1";
           row[1]=product_name.getSelectedItem().toString();
           row[2]=product_quantity.getText();
           row[3]=product_hsnno.getText();
           row[4]=product_batchno.getText();
-        
           row[5]=product_landingcost.getText();
           row[6]=product_sellingcost.getText();
-        
-        
           row[8]="cgst";
           row[9]="sgst";
           row[10]="igst";
           row[11]=total;
-        
-        
           model.addRow(row);
           
-          
-         
-        
         }
          
         
@@ -788,35 +775,65 @@ public Purchasing() {
         } catch (PrinterException ex) {
             Logger.getLogger(Purchasing.class.getName()).log(Level.SEVERE, null, ex);
         }
-if (printJob.printDialog())
-try {
-printJob.print();
-} catch(PrinterException pe) {
-System.out.println("Error printing: " + pe);
-}
-   
+        if (printJob.printDialog())
+        try {
+        printJob.print();
+        } catch(PrinterException pe) {
+        System.out.println("Error printing: " + pe);
+        }
+
     }//GEN-LAST:event_printActionPerformed
 
+    
     private void discountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountKeyPressed
         // TODO add your handling code here:
-        
+    if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+    
         String discount1=discount.getText();
-        int discount2=Integer.getInteger(discount1);
-        String totalamount=total_number_of_product.getText();
-        int totalamount1=Integer.getInteger(totalamount);
-        System.out.println(totalamount1);
+        int discount12=Integer.parseInt(discount1);
+       
+        String totalprice=total_product_price.getText();
+        float totalprice1=Float.parseFloat(totalprice);
+       
+        float afterdiscountprice=(totalprice1*discount12)/100;
+        float afterdiscountproductprice=totalprice1-afterdiscountprice;
         
-        float totalamount2=totalamount1-totalamount1*discount2/100;
-        
-        total_number_of_product.setText(""+totalamount2);
+        total_product_price.setText(""+afterdiscountproductprice);
+    }
         
     }//GEN-LAST:event_discountKeyPressed
+
+    private void product_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_product_quantityKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_product_quantityKeyReleased
+
+    private void product_gstPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_product_gstPopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        
+        String productgst=(String)product_gst.getSelectedItem();
+        
+        
+        int productgst1=Integer.parseInt(productgst);
+       
+        System.out.println(productgst1);
+        
+        String totalprice=total_product_price.getText();
+        float totalprice1=Float.parseFloat(totalprice);
+       
+        float gstpriceonproduct=(totalprice1*productgst1)/100;
+        
+        System.out.println(gstpriceonproduct);
+        
+        float aftergstproductprice=totalprice1+gstpriceonproduct;
+        
+        total_product_price.setText(""+aftergstproductprice);
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_product_gstPopupMenuWillBecomeInvisible
  
-    
-    
-    
-    
-    
     
         public String total;
         public void commonMethod(String query){
@@ -970,6 +987,8 @@ System.out.println("Error printing: " + pe);
     private javax.swing.JTextField supplier_gstno;
     private javax.swing.JTextField supplier_mobile;
     private javax.swing.JComboBox<String> supplier_name;
-    private javax.swing.JTextField total_number_of_product;
+    private javax.swing.JTextField total_product_price;
     // End of variables declaration//GEN-END:variables
+
+    
 }
